@@ -6,12 +6,12 @@ struct menultumType
 {
     string menuitem;
     double menueprice;
-    string menuelist[8] = {"Plain egg - $1.45", "Bacon and Egg - $2.45", "Muffin - $0.99", "French Toast - $1.99", "Fruit Basket - $2.49", "Cereal - $0.69", "Coffee - $0.50", "Tea - $0.75"};
 };
 
 int main()
 { 
-    menultumType newcustomer;
+    float grossSum;
+    string menuelist[8] = {"Plain egg - $1.45", "Bacon and Egg - $2.45", "Muffin - $0.99", "French Toast - $1.99", "Fruit Basket - $2.49", "Cereal - $0.69", "Coffee - $0.50", "Tea - $0.75"};
     int i;
     string select[8];
     cout<<"Welcome to Shayan's Restaurant" << endl;
@@ -19,79 +19,82 @@ int main()
     cout << "Select from the following: " << endl;
     for (i = 0; i < 8; i++)
     {
-        cout << i+1 << ". "<< newcustomer.menuelist[i] << endl;
+        cout << i+1 << ". "<< menuelist[i] << endl;
     };
     
     int n;
     cout << endl;
     cout <<"How many food items you want to order: ";
     cin >> n;
+    
+    menultumType newcustomer[n];
+    
     float sum=0;
-    cout<<endl<<"Type those items exact as menue card {example--> Plain egg}: " << endl;
+    cout<<endl<<"Type the number corresponding to the items exact as menue card {example--> Enter 1 to select Plain egg}: " << endl;
 
     string selected[n];
     for ( i = 0; i <n; i++)
     {
-        cin >> newcustomer.menuitem;
+        cin >> newcustomer[i].menuitem;
 
-        if(newcustomer.menuitem=="1"){
-            selected[i]="Plain egg $1.45";
-            newcustomer.menueprice=1.45;
-            sum=sum+newcustomer.menueprice;
-            
+        if(newcustomer[i].menuitem=="1"){
+            newcustomer[i].menuitem="Plain egg $";
+            newcustomer[i].menueprice=1.45;
+            sum=sum+newcustomer[i].menueprice;
+            cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="2"){
-            selected[i]="Bacon and Egg $2.45";
-            newcustomer.menueprice=2.45;
-            sum=sum+newcustomer.menueprice; 
-          
+        if(newcustomer[i].menuitem=="2"){
+            newcustomer[i].menuitem="Bacon and Egg $";
+            newcustomer[i].menueprice=2.45;
+            sum=sum+newcustomer[i].menueprice; 
+          cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="3"){
-            selected[i]="Muffin $0.99";
-            newcustomer.menueprice=0.99;
-            sum=sum+newcustomer.menueprice; 
-            
+        if(newcustomer[i].menuitem=="3"){
+            newcustomer[i].menuitem="Muffin $";
+            newcustomer[i].menueprice=0.99;
+            sum=sum+newcustomer[i].menueprice; 
+            cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="4"){
-            selected[i]="French Toast $1.99";
-            newcustomer.menueprice=1.99;
-            sum=sum+newcustomer.menueprice; 
-           
+        if(newcustomer[i].menuitem=="4"){
+            newcustomer[i].menuitem="French Toast $";
+            newcustomer[i].menueprice=1.99;
+            sum=sum+newcustomer[i].menueprice; 
+           cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="5"){
-            selected[i]="Fruit Basket $2.49";
-            newcustomer.menueprice=2.49;
-            sum=sum+newcustomer.menueprice; 
-            
+        if(newcustomer[i].menuitem=="5"){
+            newcustomer[i].menuitem="Fruit Basket $";
+            newcustomer[i].menueprice=2.49;
+            sum=sum+newcustomer[i].menueprice; 
+            cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="6"){
-            selected[i]="Cereal $0.69";
-            newcustomer.menueprice=0.69;
-            sum=sum+newcustomer.menueprice; 
-            
+        if(newcustomer[i].menuitem=="6"){
+            newcustomer[i].menuitem="Cereal $";
+            newcustomer[i].menueprice=0.69;
+            sum=sum+newcustomer[i].menueprice; 
+            cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="7"){
-            selected[i]="Coffee $0.50";
-            newcustomer.menueprice=0.50;
-            sum=sum+newcustomer.menueprice; 
+        if(newcustomer[i].menuitem=="7"){
+            newcustomer[i].menuitem="Coffee $";
+            newcustomer[i].menueprice=0.50;
+            sum=sum+newcustomer[i].menueprice; cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice;
         }
-        if(newcustomer.menuitem=="8"){
-            selected[i]="Tea $0.75";
-            newcustomer.menueprice=0.75;
-            sum=sum+newcustomer.menueprice; 
+        if(newcustomer[i].menuitem=="8"){
+            newcustomer[i].menuitem="Tea $";
+            newcustomer[i].menueprice=0.75;
+            sum=sum+newcustomer[i].menueprice;cout<<"Selected "<<newcustomer[i].menuitem<<newcustomer[i].menueprice; 
         }
-    
+    cout<<endl;
     }
 
-    float gross=sum*1.05;
-
+    grossSum=sum*1.05;
+    
     cout << endl<<"___________________________________________"<< endl;
     cout << "Welcome to my Restaurant" << endl;
     for(i=0;i<n;i++){
-        cout<<selected[i]<<endl;
+        cout<<newcustomer[i].menuitem<<newcustomer[i].menueprice<<endl;
     }
-    cout<< "Tax: "<< printf("%0.2f",0.5*sum)<<endl;
-    cout<<"Amount due: " << printf("%0.2f",gross);
+    cout<< "Tax: "<< printf("%0.2f",0.05*sum)<<endl;
+    cout<<"Amount due: " << printf("%0.2f",grossSum);
 
 
 
